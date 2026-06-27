@@ -1,0 +1,45 @@
+<!-- 日历组件 -->
+<view class="calendar">
+  <!-- 月份切换 -->
+  <view class="calendar__header">
+    <view class="calendar__nav-btn" bindtap="handlePrev">
+      <text>‹</text>
+    </view>
+    <text class="calendar__title">{{year}} 年 {{month}} 月</text>
+    <view class="calendar__nav-btn" bindtap="handleNext">
+      <text>›</text>
+    </view>
+  </view>
+
+  <!-- 星期头 -->
+  <view class="calendar__week-header">
+    <text wx:for="{{weekHeaders}}" wx:key="*this" class="calendar__week-item">
+      {{item}}
+    </text>
+  </view>
+
+  <!-- 日期格子 -->
+  <view class="calendar__grid">
+    <view
+      wx:for="{{days}}"
+      wx:key="index"
+      class="calendar__day {{item.day === 0 ? 'calendar__day--empty' : ''}} {{item.isToday ? 'calendar__day--today' : ''}} {{item.checked ? 'calendar__day--checked' : ''}}"
+      data-day="{{item.day}}"
+      bindtap="handleDayTap"
+    >
+      <text wx:if="{{item.day > 0}}">{{item.day}}</text>
+    </view>
+  </view>
+
+  <!-- 图例 -->
+  <view class="calendar__legend">
+    <view class="calendar__legend-item">
+      <view class="calendar__legend-dot calendar__legend-dot--checked" />
+      <text>已打卡</text>
+    </view>
+    <view class="calendar__legend-item">
+      <view class="calendar__legend-dot calendar__legend-dot--today" />
+      <text>今天</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<!-- 训练记录项 -->
+<view class="record-item" bindtap="handleTap">
+  <view class="record-item__date">
+    <text class="record-item__day">{{record.day}}</text>
+    <text class="record-item__month">{{record.month}}</text>
+  </view>
+  <view class="record-item__info">
+    <text class="record-item__title">{{record.title}}</text>
+    <text class="record-item__desc">{{record.desc}}</text>
+  </view>
+  <text class="record-item__duration">{{record.duration}}</text>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "训练记录",
+  "usingComponents": {
+    "calendar": "/components/calendar/calendar",
+    "record-item": "/components/record-item/record-item"
+  }
+}

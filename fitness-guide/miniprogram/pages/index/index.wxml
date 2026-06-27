@@ -1,0 +1,83 @@
+<!-- 首页 -->
+<view class="index-page">
+  <!-- 问候区域 -->
+  <view class="index-page__greeting">
+    <text class="text-meta">{{dateStr}}</text>
+    <text class="text-h1">{{greeting}}，{{userName}}</text>
+    <text class="text-caption" style="margin-top: 8rpx;">今天是{{todayPlan}}，准备好了吗</text>
+  </view>
+
+  <!-- 连续打卡卡片 -->
+  <view class="index-page__streak animate-in">
+    <view>
+      <text class="index-page__streak-num">{{streakDays}}</text>
+      <text class="index-page__streak-label">连续打卡</text>
+    </view>
+    <view style="text-align: right;">
+      <text class="index-page__streak-num">{{weekProgress}}</text>
+      <text class="index-page__streak-label">本周完成</text>
+    </view>
+  </view>
+
+  <!-- 今日训练 -->
+  <view class="index-page__section-header">
+    <text class="text-h2">今日训练</text>
+    <text class="pill">{{todayPlan}}</text>
+  </view>
+
+  <view class="card animate-in" style="margin-bottom: 32rpx;">
+    <exercise-item
+      wx:for="{{todayExercises}}"
+      wx:key="id"
+      exercise="{{item}}"
+      done="{{item.done}}"
+      bind:check="handleExerciseCheck"
+    />
+
+    <!-- 进度 -->
+    <view style="margin-top: 24rpx;">
+      <view class="index-page__progress-header">
+        <text class="text-caption">完成进度</text>
+        <text class="text-caption">{{doneCount}} / {{totalCount}}</text>
+      </view>
+      <view class="progress-track">
+        <view class="progress-fill" style="width: {{progressPercent}}%;" />
+      </view>
+    </view>
+
+    <button class="btn btn-primary btn-full" style="margin-top: 24rpx;" bindtap="openTraining">
+      <text style="margin-right: 8rpx;">▶</text>
+      开始训练
+    </button>
+  </view>
+
+  <!-- 快捷入口 -->
+  <text class="text-h2" style="margin-bottom: 24rpx; display: block;">快捷入口</text>
+  <view class="index-page__quick-grid animate-in">
+    <view class="index-page__quick-item" bindtap="switchToPlan">
+      <image src="/images/icon/plan.png" />
+      <text>训练计划</text>
+    </view>
+    <view class="index-page__quick-item" bindtap="switchToRecord">
+      <image src="/images/icon/record.png" />
+      <text>训练记录</text>
+    </view>
+    <view class="index-page__quick-item" bindtap="openBodyData">
+      <image src="/images/icon/weight.png" />
+      <text>记录体重</text>
+    </view>
+  </view>
+
+  <!-- 最近训练 -->
+  <text class="text-h2" style="margin: 32rpx 0 24rpx; display: block;">最近训练</text>
+  <view class="card animate-in">
+    <record-item
+      wx:for="{{recentRecords}}"
+      wx:key="id"
+      record="{{item}}"
+      bind:tap="handleRecordTap"
+    />
+  </view>
+
+  <view style="height: 32rpx;"></view>
+</view>

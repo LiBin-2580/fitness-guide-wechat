@@ -1,0 +1,16 @@
+<!-- 训练动作项 -->
+<view class="exercise-row" bindtap="handleTap">
+  <view class="exercise-row__icon">
+    <image src="/images/icon/exercise.png" />
+  </view>
+  <view class="exercise-row__info">
+    <text class="exercise-row__name">{{exercise.name}}</text>
+    <text class="exercise-row__detail">{{exercise.sets}} 组 × {{exercise.reps}} 次 · 休息 {{exercise.rest}}s</text>
+  </view>
+  <view
+    class="exercise-row__check {{done ? 'exercise-row__check--done' : ''}}"
+    catchtap="handleCheck"
+  >
+    <text wx:if="{{done}}">✓</text>
+  </view>
+</view>

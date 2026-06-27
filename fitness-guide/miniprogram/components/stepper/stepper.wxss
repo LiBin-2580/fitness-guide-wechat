@@ -1,0 +1,49 @@
+/* 步进器样式 */
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.stepper__btn {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  border: 4rpx solid var(--color-primary);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepper__btn text {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.stepper__btn:active {
+  background: var(--color-primary);
+}
+
+.stepper__btn:active text {
+  color: #fff;
+}
+
+.stepper__value-wrap {
+  min-width: 96rpx;
+  text-align: center;
+}
+
+.stepper__value {
+  font-size: var(--font-stat);
+  font-weight: 700;
+  display: block;
+}
+
+.stepper__unit {
+  font-size: var(--font-meta);
+  color: var(--color-text-secondary);
+  display: block;
+}

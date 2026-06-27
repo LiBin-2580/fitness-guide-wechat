@@ -1,0 +1,28 @@
+/* 训练记录页样式 */
+.record-page {
+  padding: 0 32rpx 32rpx;
+}
+
+.record-page__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+  margin-bottom: 32rpx;
+}
+
+.record-page__stat-item {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 28rpx 20rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.record-page__stat-item .text-stat {
+  display: block;
+}
+
+.record-page__stat-item .text-caption {
+  margin-top: 8rpx;
+  display: block;
+}

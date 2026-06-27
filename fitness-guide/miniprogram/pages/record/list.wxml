@@ -1,0 +1,43 @@
+<!-- 训练记录页 -->
+<view class="record-page">
+  <text class="text-h1" style="margin-bottom: 32rpx; display: block;">训练记录</text>
+
+  <!-- 日历 -->
+  <calendar
+    year="{{year}}"
+    month="{{month}}"
+    checkedDays="{{checkedDays}}"
+    bind:monthChange="handleMonthChange"
+    bind:dayTap="handleDayTap"
+    style="margin-bottom: 32rpx;"
+  />
+
+  <!-- 统计卡片 -->
+  <view class="record-page__stats animate-in">
+    <view class="record-page__stat-item">
+      <text class="text-stat" style="color: var(--color-primary);">{{stats.checkDays}}</text>
+      <text class="text-caption">打卡天数</text>
+    </view>
+    <view class="record-page__stat-item">
+      <text class="text-stat" style="color: var(--color-primary);">{{stats.totalHours}}</text>
+      <text class="text-caption">训练时长(h)</text>
+    </view>
+    <view class="record-page__stat-item">
+      <text class="text-stat" style="color: var(--color-primary);">{{stats.totalSets}}</text>
+      <text class="text-caption">完成组数</text>
+    </view>
+  </view>
+
+  <!-- 最近记录 -->
+  <text class="text-h2" style="margin-bottom: 24rpx; display: block;">最近记录</text>
+  <view class="card animate-in">
+    <record-item
+      wx:for="{{records}}"
+      wx:key="id"
+      record="{{item}}"
+      bind:tap="handleRecordTap"
+    />
+  </view>
+
+  <view style="height: 32rpx;"></view>
+</view>

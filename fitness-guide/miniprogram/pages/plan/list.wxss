@@ -1,0 +1,17 @@
+/* 训练计划列表页样式 */
+.plan-page {
+  padding: 0 32rpx 32rpx;
+}
+
+.plan-page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.plan-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}

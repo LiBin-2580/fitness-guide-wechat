@@ -1,0 +1,33 @@
+<!-- 训练计划列表页 -->
+<view class="plan-page">
+  <!-- 标题栏 -->
+  <view class="plan-page__header">
+    <text class="text-h1">训练计划</text>
+    <button class="btn btn-primary btn-sm" bindtap="handleCreate">
+      <text style="margin-right: 4rpx;">+</text>
+      新建
+    </button>
+  </view>
+
+  <!-- 计划列表 -->
+  <view wx:if="{{planList.length > 0}}" class="plan-page__list">
+    <plan-card
+      wx:for="{{planList}}"
+      wx:key="id"
+      plan="{{item}}"
+      bind:tap="handlePlanTap"
+    />
+  </view>
+
+  <!-- 空状态 -->
+  <empty
+    wx:if="{{!isLoading && planList.length === 0}}"
+    icon="/images/empty-plan.png"
+    title="暂无训练计划"
+    desc="创建一个训练计划，开始你的健身之旅"
+    btnText="新建计划"
+    bind:action="handleCreate"
+  />
+
+  <view style="height: 32rpx;"></view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "训练计划",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "plan-card": "/components/plan-card/plan-card",
+    "empty": "/components/empty/empty"
+  }
+}

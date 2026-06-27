@@ -1,0 +1,73 @@
+<!-- 训练计划详情页 -->
+<view class="plan-detail">
+  <!-- 计划信息 -->
+  <view class="plan-detail__info card">
+    <view class="plan-detail__header">
+      <view>
+        <text class="text-h2">{{plan.name}}</text>
+        <text class="text-caption" style="margin-top: 8rpx; display: block;">{{plan.description}}</text>
+      </view>
+      <text wx:if="{{plan.status === 'active'}}" class="pill">进行中</text>
+      <text wx:elif="{{plan.status === 'completed'}}" class="tag">已完成</text>
+    </view>
+
+    <view class="plan-detail__meta">
+      <view class="plan-detail__meta-item">
+        <text class="plan-detail__meta-num">{{plan.frequency}}</text>
+        <text class="text-caption">天/周</text>
+      </view>
+      <view class="plan-detail__meta-item">
+        <text class="plan-detail__meta-num">{{trainingDays.length}}</text>
+        <text class="text-caption">训练日</text>
+      </view>
+      <view class="plan-detail__meta-item">
+        <text class="plan-detail__meta-num">{{plan.currentWeek}}/{{plan.totalWeeks}}</text>
+        <text class="text-caption">周进度</text>
+      </view>
+    </view>
+
+    <view style="margin-top: 24rpx;">
+      <view class="plan-detail__progress-header">
+        <text class="text-caption">第 {{plan.currentWeek}} 周 / 共 {{plan.totalWeeks}} 周</text>
+        <text class="text-caption">{{plan.progress}}%</text>
+      </view>
+      <view class="progress-track">
+        <view class="progress-fill" style="width: {{plan.progress}}%;" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 训练日切换 -->
+  <scroll-view scroll-x class="plan-detail__day-tabs">
+    <view
+      wx:for="{{trainingDays}}"
+      wx:key="day"
+      class="plan-detail__day-tab {{activeDay === index ? 'plan-detail__day-tab--active' : ''}}"
+      data-day="{{index}}"
+      bindtap="switchDay"
+    >
+      <text>第{{item.day}}天</text>
+      <text class="plan-detail__day-name">{{item.name}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 动作列表 -->
+  <view class="card" style="margin-top: 24rpx;">
+    <exercise-item
+      wx:for="{{trainingDays[activeDay].exercises}}"
+      wx:key="id"
+      exercise="{{item}}"
+    />
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="plan-detail__actions">
+    <button class="btn btn-primary btn-full" bindtap="startTraining">
+      开始训练
+    </button>
+    <view class="plan-detail__action-row">
+      <button class="btn btn-ghost" style="flex: 1;" bindtap="editPlan">编辑</button>
+      <button class="btn btn-danger" style="flex: 1;" bindtap="deletePlan">删除</button>
+    </view>
+  </view>
+</view>

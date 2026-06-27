@@ -1,0 +1,64 @@
+/* 训练计划卡片样式 */
+.plan-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.plan-card:active {
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.plan-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.plan-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.plan-card__title {
+  font-size: var(--font-h3);
+  font-weight: 600;
+  display: block;
+}
+
+.plan-card__desc {
+  font-size: var(--font-caption);
+  color: var(--color-text-secondary);
+  margin-top: 8rpx;
+  display: block;
+}
+
+.plan-card__meta {
+  display: flex;
+  gap: 24rpx;
+}
+
+.plan-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: var(--font-meta);
+  color: var(--color-text-secondary);
+}
+
+.plan-card__meta-icon {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.plan-card__progress {
+  margin-top: 24rpx;
+}
+
+.plan-card__progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}

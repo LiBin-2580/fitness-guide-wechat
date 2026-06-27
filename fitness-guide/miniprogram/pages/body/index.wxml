@@ -1,0 +1,143 @@
+<!-- 身体数据页 -->
+<view class="body-page">
+  <text class="text-h1" style="margin-bottom: 32rpx; display: block;">身体数据</text>
+
+  <!-- 数据类型切换 -->
+  <view class="body-page__tabs">
+    <view
+      wx:for="{{types}}"
+      wx:key="key"
+      class="body-page__tab {{activeType === item.key ? 'body-page__tab--active' : ''}}"
+      data-type="{{item.key}}"
+      bindtap="switchType"
+    >
+      <text>{{item.label}}</text>
+    </view>
+  </view>
+
+  <!-- 当前数值 -->
+  <view class="body-page__current card animate-in">
+    <text class="body-page__current-value">{{currentValue}}</text>
+    <text class="body-page__current-unit">{{currentUnit}}</text>
+    <text class="text-caption" style="margin-top: 8rpx;">当前{{activeType === 'weight' ? '体重' : activeType === 'fat' ? '体脂率' : 'BMI'}}</text>
+  </view>
+
+  <!-- 趋势图表 -->
+  <view class="body-page__chart card animate-in">
+    <text class="text-h3" style="margin-bottom: 16rpx; display: block;">趋势变化</text>
+    <view class="body-page__chart-area">
+      <text class="text-caption" style="text-align: center; display: block; padding: 60rpx 0;">
+        图表区域（需接入 ECharts 或自行绘制 Canvas）
+      </text>
+    </view>
+  </view>
+
+  <!-- 历史数据 -->
+  <view style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24rpx;">
+    <text class="text-h2">历史记录</text>
+    <view class="body-page__add-btn" bindtap="openAddModal">
+      <text>+</text>
+    </view>
+  </view>
+
+  <view class="card animate-in">
+    <view
+      wx:for="{{historyList}}"
+      wx:key="id"
+      class="body-page__history-item"
+    >
+      <text class="body-page__history-date">{{item.date}}</text>
+      <text class="body-page__history-value">{{item.value}} {{item.unit}}</text>
+    </view>
+  </view>
+
+  <!-- 录入弹窗 -->
+  <view
+    class="body-page__modal {{showAddModal ? 'body-page__modal--show' : ''}}"
+    bindtap="closeAddModal"
+  >
+    <view class="body-page__modal-sheet" catchtap="">
+      <view class="body-page__modal-handle" />
+      <text class="text-h2" style="margin-bottom: 32rpx; display: block;">记录身体数据</text>
+
+      <view class="body-page__form-row">
+        <view class="body-page__form-group">
+          <text class="body-page__form-label">体重 (kg)</text>
+          <input
+            type="digit"
+            class="body-page__form-input"
+            placeholder="72.5"
+            value="{{formData.weight}}"
+            data-field="weight"
+            bindinput="handleInput"
+          />
+        </view>
+        <view class="body-page__form-group">
+          <text class="body-page__form-label">体脂率 (%)</text>
+          <input
+            type="digit"
+            class="body-page__form-input"
+            placeholder="15.8"
+            value="{{formData.fat}}"
+            data-field="fat"
+            bindinput="handleInput"
+          />
+        </view>
+      </view>
+
+      <view class="body-page__form-row">
+        <view class="body-page__form-group">
+          <text class="body-page__form-label">胸围 (cm)</text>
+          <input
+            type="digit"
+            class="body-page__form-input"
+            placeholder="102"
+            value="{{formData.chest}}"
+            data-field="chest"
+            bindinput="handleInput"
+          />
+        </view>
+        <view class="body-page__form-group">
+          <text class="body-page__form-label">腰围 (cm)</text>
+          <input
+            type="digit"
+            class="body-page__form-input"
+            placeholder="78"
+            value="{{formData.waist}}"
+            data-field="waist"
+            bindinput="handleInput"
+          />
+        </view>
+      </view>
+
+      <view class="body-page__form-row">
+        <view class="body-page__form-group">
+          <text class="body-page__form-label">臀围 (cm)</text>
+          <input
+            type="digit"
+            class="body-page__form-input"
+            placeholder="96"
+            value="{{formData.hip}}"
+            data-field="hip"
+            bindinput="handleInput"
+          />
+        </view>
+        <view class="body-page__form-group">
+          <text class="body-page__form-label">臂围 (cm)</text>
+          <input
+            type="digit"
+            class="body-page__form-input"
+            placeholder="36"
+            value="{{formData.arm}}"
+            data-field="arm"
+            bindinput="handleInput"
+          />
+        </view>
+      </view>
+
+      <button class="btn btn-primary btn-full" style="margin-top: 16rpx;" bindtap="saveMetric">
+        保存记录
+      </button>
+    </view>
+  </view>
+</view>

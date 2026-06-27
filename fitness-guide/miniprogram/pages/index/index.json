@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "健身指南",
+  "usingComponents": {
+    "exercise-item": "/components/exercise-item/exercise-item",
+    "record-item": "/components/record-item/record-item"
+  }
+}

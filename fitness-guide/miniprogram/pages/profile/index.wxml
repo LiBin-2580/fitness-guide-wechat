@@ -1,0 +1,71 @@
+<!-- 个人中心页 -->
+<view class="profile-page">
+  <!-- 用户信息 -->
+  <view class="profile-page__user">
+    <view class="profile-page__avatar">
+      <image wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}" />
+      <text wx:else class="profile-page__avatar-placeholder">👤</text>
+    </view>
+    <text class="text-h2">{{userInfo.nickName}}</text>
+    <text class="text-caption" style="margin-top: 8rpx;">{{userInfo.desc}}</text>
+  </view>
+
+  <!-- 统计行 -->
+  <view class="profile-page__stats animate-in">
+    <view class="profile-page__stat-item">
+      <text class="profile-page__stat-num">{{stats.totalTraining}}</text>
+      <text class="profile-page__stat-label">累计训练</text>
+    </view>
+    <view class="profile-page__stat-item">
+      <text class="profile-page__stat-num">{{stats.streakDays}}</text>
+      <text class="profile-page__stat-label">连续打卡</text>
+    </view>
+    <view class="profile-page__stat-item">
+      <text class="profile-page__stat-num">{{stats.completedPlans}}</text>
+      <text class="profile-page__stat-label">完成计划</text>
+    </view>
+  </view>
+
+  <!-- 成就徽章 -->
+  <text class="text-h2" style="margin-bottom: 24rpx; display: block;">成就徽章</text>
+  <scroll-view scroll-x class="profile-page__badges">
+    <view
+      wx:for="{{badges}}"
+      wx:key="id"
+      class="profile-page__badge {{item.achieved ? '' : 'profile-page__badge--locked'}}"
+    >
+      <view class="profile-page__badge-icon">
+        <image src="{{item.icon}}" />
+      </view>
+      <text class="text-caption">{{item.name}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 设置列表 -->
+  <text class="text-h2" style="margin: 40rpx 0 24rpx; display: block;">设置</text>
+  <view class="card animate-in" style="padding: 8rpx 32rpx;">
+    <view
+      wx:for="{{settings}}"
+      wx:key="id"
+      class="profile-page__setting-item"
+      data-id="{{item.id}}"
+      bindtap="handleSettingTap"
+    >
+      <view class="profile-page__setting-left">
+        <text class="profile-page__setting-icon">{{item.icon}}</text>
+        <text>{{item.label}}</text>
+      </view>
+      <view class="profile-page__setting-right">
+        <text wx:if="{{item.value}}">{{item.value}}</text>
+        <text wx:if="{{item.arrow}}" class="profile-page__setting-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <button class="btn btn-danger btn-full" style="margin-top: 40rpx;" bindtap="doLogout">
+    退出登录
+  </button>
+
+  <view style="height: 32rpx;"></view>
+</view>

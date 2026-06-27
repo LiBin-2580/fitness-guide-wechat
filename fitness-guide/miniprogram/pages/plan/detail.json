@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "计划详情",
+  "usingComponents": {
+    "exercise-item": "/components/exercise-item/exercise-item"
+  }
+}

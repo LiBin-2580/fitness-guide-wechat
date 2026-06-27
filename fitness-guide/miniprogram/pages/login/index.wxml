@@ -1,0 +1,55 @@
+<!-- 登录页 -->
+<view class="login-page">
+  <!-- Logo -->
+  <view class="login-page__logo">
+    <image src="/images/logo.png" />
+  </view>
+  <text class="login-page__title">健身指南</text>
+  <text class="login-page__subtitle">记录每一次突破</text>
+
+  <!-- 登录表单 -->
+  <view class="login-page__form">
+    <view class="login-page__form-group">
+      <input
+        type="number"
+        class="login-page__input"
+        placeholder="请输入手机号"
+        maxlength="11"
+        value="{{phone}}"
+        bindinput="handlePhoneInput"
+      />
+    </view>
+    <view class="login-page__form-row">
+      <input
+        type="number"
+        class="login-page__input"
+        placeholder="验证码"
+        maxlength="6"
+        value="{{code}}"
+        bindinput="handleCodeInput"
+      />
+      <view
+        class="login-page__code-btn {{countdown > 0 ? 'login-page__code-btn--disabled' : ''}}"
+        bindtap="getCode"
+      >
+        <text>{{countdown > 0 ? countdown + 's' : '获取验证码'}}</text>
+      </view>
+    </view>
+    <button class="btn btn-primary btn-full login-page__submit" bindtap="doLogin">
+      登录 / 注册
+    </button>
+  </view>
+
+  <!-- 其他登录方式 -->
+  <view class="login-page__divider">
+    <view class="login-page__divider-line" />
+    <text class="login-page__divider-text">其他登录方式</text>
+    <view class="login-page__divider-line" />
+  </view>
+
+  <view class="login-page__wechat">
+    <view class="login-page__wechat-btn" bindtap="doWxLogin">
+      <image src="/images/icon/wechat.png" />
+    </view>
+  </view>
+</view>

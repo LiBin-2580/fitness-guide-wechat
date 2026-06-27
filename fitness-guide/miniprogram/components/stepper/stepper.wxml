@@ -1,0 +1,13 @@
+<!-- 数字步进器 -->
+<view class="stepper">
+  <view class="stepper__btn" bindtap="handleMinus">
+    <text>−</text>
+  </view>
+  <view class="stepper__value-wrap">
+    <text class="stepper__value">{{value}}</text>
+    <text wx:if="{{unit}}" class="stepper__unit">{{unit}}</text>
+  </view>
+  <view class="stepper__btn" bindtap="handlePlus">
+    <text>+</text>
+  </view>
+</view>

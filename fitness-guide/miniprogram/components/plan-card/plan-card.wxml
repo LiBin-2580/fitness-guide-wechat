@@ -1,0 +1,37 @@
+<!-- 训练计划卡片 -->
+<view class="plan-card" bindtap="handleTap">
+  <view class="plan-card__header">
+    <view class="plan-card__info">
+      <text class="plan-card__title">{{plan.name}}</text>
+      <text class="plan-card__desc">{{plan.description}}</text>
+    </view>
+    <text wx:if="{{plan.status === 'active'}}" class="pill">进行中</text>
+    <text wx:elif="{{plan.status === 'completed'}}" class="tag">已完成</text>
+    <text wx:else class="tag">草稿</text>
+  </view>
+
+  <view class="plan-card__meta">
+    <view class="plan-card__meta-item">
+      <image src="/images/icon/clock.png" class="plan-card__meta-icon" />
+      <text>{{plan.frequency}} 天/周</text>
+    </view>
+    <view class="plan-card__meta-item">
+      <image src="/images/icon/list.png" class="plan-card__meta-icon" />
+      <text>{{plan.exerciseCount}} 个动作</text>
+    </view>
+    <view wx:if="{{plan.progressWeeks}}" class="plan-card__meta-item">
+      <image src="/images/icon/trend.png" class="plan-card__meta-icon" />
+      <text>进行 {{plan.progressWeeks}} 周</text>
+    </view>
+  </view>
+
+  <view wx:if="{{plan.totalWeeks}}" class="plan-card__progress">
+    <view class="plan-card__progress-header">
+      <text class="text-caption">第 {{plan.currentWeek}} 周 / 共 {{plan.totalWeeks}} 周</text>
+      <text class="text-caption">{{plan.progress}}%</text>
+    </view>
+    <view class="progress-track">
+      <view class="progress-fill" style="width: {{plan.progress}}%;" />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/index",
+    "pages/plan/list",
+    "pages/plan/detail",
+    "pages/record/list",
+    "pages/profile/index",
+    "pages/training/do",
+    "pages/body/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "健身指南",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F5F5",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1AAD19",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab/home.png",
+        "selectedIconPath": "images/tab/home-active.png"
+      },
+      {
+        "pagePath": "pages/plan/list",
+        "text": "计划",
+        "iconPath": "images/tab/plan.png",
+        "selectedIconPath": "images/tab/plan-active.png"
+      },
+      {
+        "pagePath": "pages/record/list",
+        "text": "记录",
+        "iconPath": "images/tab/record.png",
+        "selectedIconPath": "images/tab/record-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "images/tab/profile.png",
+        "selectedIconPath": "images/tab/profile-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}
